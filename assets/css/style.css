@@ -16,17 +16,8 @@ padding:20px;
 #IronMan{
     background-image: url('../images/ironman.png');
 }
-
-.Superman{
-    background-image: url('../images/superman.jpg');
-}
-
-.Batman{
-    background-image: url('../images/batman.jpg');
-}
-
-.IronMan{
-    background-image: url('../images/ironman.png');
+#stats-user, #stats-versus{
+    display: none;
 }
 
 .player{
@@ -44,7 +35,7 @@ padding:20px;
 
 .test{
     width:300px;
-    height: 300px;
+    height: 200px;
     border:2pt solid black;
     margin:10px;
 }
@@ -53,7 +44,13 @@ padding:20px;
     margin-top:100px;
 }
 .lbl-versus{
-    margin-top:80px;
+    margin-top:50px;
     font-size:50pt;
     font-weight: bold;
+}
+
+.stats{
+    border:1pt solid black;
+    margin:10px;
+    padding:20px;
 }

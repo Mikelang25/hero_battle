@@ -2,31 +2,28 @@
 userPlayerSelected = false;
 versusPlayerSelected = false;
 
-var character1 = {
+var Superman = {
     Name:"Superman",
-    HealthPoints: 200,
-    AttackPoints: 45,
-    CountAttack: 25,
-    picSource: "'url(../images/superman.jpg)'",
+    healthPoints: 200,
+    attackPoints: 45,
+    countAttack: 25,
 }
 
-var character2 = {
+var Batman = {
     Name:"Batman",
-    HealthPoints: 200,
-    AttackPoints: 45,
-    CountAttack: 25,
-    picSource: "'url(../images/batman.jpg)'",
+    healthPoints: 200,
+    attackPoints: 45,
+    countAttack: 25,
 }
 
-var character3 = {
+var IronMan = {
     Name:"IronMan",
-    HealthPoints: 200,
-    AttackPoints: 45,
-    CountAttack: 25,
-    picSource: "'url(../images/ironman.png)'",
+    healthPoints: 200,
+    attackPoints: 45,
+    countAttack: 25,
 }
 
-var players = [character1,character2,character3];
+var players = [Superman,Batman,IronMan];
 
 
 
@@ -37,6 +34,9 @@ $(document).ready(function() {
         var newPlayer = $("<div>")
         newPlayer.addClass("player")
         newPlayer.attr("id",arrayItem.Name)
+        newPlayer.attr("healthPoints",arrayItem.healthPoints)
+        newPlayer.attr("attackPoints",arrayItem.attackPoints)
+        newPlayer.attr("countAttack",arrayItem.countAttack)
         newPlayer.attr("name",arrayItem.Name)
         newPlayer.text(arrayItem.Name)
         $("#character-select").append(newPlayer)
@@ -44,28 +44,47 @@ $(document).ready(function() {
     });
 
     $(".player").on("click", function() {
+    
+    //checks to see if a user player and versus player has been selected 
+    if(userPlayerSelected && versusPlayerSelected){
 
-        if(userPlayerSelected){
-            var versusPlayer = $("<div>")
-            versusPlayer.addClass($(this).text())
-            versusPlayer.addClass("player")
-            versusPlayer.attr("id","user-player")
-            versusPlayer.text($(this).text())
-            $("#versus-select").append(versusPlayer)
-            versusPlayerSelected = true;
-            $(this).remove();
-        }else{
-            var userPlayer = $("<div>")
-            userPlayer.addClass($(this).text())
-            userPlayer.addClass("player")
-            userPlayer.attr("id","user-player")
-            userPlayer.text($(this).text())
-            $("#user-select").append(userPlayer)
-            userPlayerSelected = true;
-            $(this).remove();
-        } 
+    }else{
             
-        
+            if(userPlayerSelected){
+                $(this).clone().appendTo("#versus-select");
+                versusPlayerSelected = true;
+                if($(this).text() ==="Superman"){
+                    $("#versus-health").text("Health: " + Superman.healthPoints)
+                    $("#versus-attack").text("Attack: " + Superman.attackPoints)
+                }if ($(this).text() ==="Batman") {
+                    $("#versus-health").text("Health: " + Batman.healthPoints)
+                    $("#versus-attack").text("Attack: " + Batman.attackPoints)    
+                } else {
+                    $("#versus-health").text("Health: " + IronMan.healthPoints)
+                    $("#versus-attack").text("Attack: " + IronMan.attackPoints)                
+                }
+                $("#stats-versus").show();
+                $(this).remove();
+            }else{
+                $(this).clone().appendTo("#user-select");
+                userPlayerSelected = true;
+                if($(this).text() ==="Superman"){
+                    $("#user-health").text("Health: " + Superman.healthPoints)
+                    $("#user-attack").text("Attack: " + Superman.attackPoints)
+                }if ($(this).text() ==="Batman") {
+                    $("#user-health").text("Health: " + Batman.healthPoints)
+                    $("#user-attack").text("Attack: " + Batman.attackPoints)    
+                } else {
+                    $("#user-health").text("Health: " + IronMan.healthPoints)
+                    $("#user-attack").text("Attack: " + IronMan.attackPoints)                
+                }
+                $("#stats-user").show();
+                console.log($(this).text())
+                $(this).remove();
+                
+            } 
+                
+    }  
     });
 
     
