@@ -32,7 +32,14 @@ var IronMan = {
     countAttack: 30,
 }
 
-var players = [Superman,Batman,IronMan];
+var Wolverine = {
+    Name:"Wolverine",
+    healthPoints: 320,
+    attackPoints: 65,
+    countAttack: 38,
+}
+
+var players = [Superman,Batman,IronMan,Wolverine];
 
 
 
@@ -74,6 +81,10 @@ $(document).ready(function() {
                     $("#versus-health").text(IronMan.healthPoints)
                     $("#versus-attack").text(IronMan.attackPoints) 
                     $("#versus-countAttack").text(IronMan.countAttack)             
+                }if ($(this).text() ==="Wolverine") {
+                    $("#versus-health").text(Wolverine.healthPoints)
+                    $("#versus-attack").text(Wolverine.attackPoints) 
+                    $("#versus-countAttack").text(Wolverine.countAttack)             
                 }
                 $("#lblv-health").text("Health: ")
                 $("#lblv-attack").text("Attack: ")  
@@ -98,6 +109,10 @@ $(document).ready(function() {
                     $("#user-health").text(IronMan.healthPoints)
                     $("#user-attack").text(IronMan.attackPoints)   
                     $("#user-countAttack").text(Iron.countAttack)             
+                }if ($(this).text() ==="Wolverine") {
+                    $("#user-health").text(Wolverine.healthPoints)
+                    $("#user-attack").text(Wolverine.attackPoints)   
+                    $("#user-countAttack").text(Wolverine.countAttack)             
                 }
                 $("#lblu-health").text("Health: ")
                 $("#lblu-attack").text("Attack: ")  
@@ -134,9 +149,14 @@ $(document).ready(function() {
                     $("#versus-select").empty();
                     $("#stats-versus").hide();
                     $("#lbl-versus").remove()
+                    versusPlayerSelected = false;
                 }
                 if(userHealthStatus <= 0 && versusHealthStatus > 0){
                     alert(versus + "  Wins!!!")
+                    $("#user-select").empty();
+                    $("#stats-user").hide();
+                    $("#lbl-user").remove()
+                    userPlayerSelected = false;
 
                 }      
 

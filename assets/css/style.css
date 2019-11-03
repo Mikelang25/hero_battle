@@ -42,7 +42,7 @@
 }
 
 #btn-attack{
-    margin:5px;
+    margin-top:20px;
 }
 
 #character-select{
@@ -61,6 +61,11 @@
 #IronMan{
     background-image: url('../images/ironman.png');
 }
+
+#Wolverine{
+    background-image: url('../images/wolverine.jpg');
+}
+
 #stats-user, #stats-versus{
     display: none;
 }
