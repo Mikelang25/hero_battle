@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Superhero Battle!</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -43,7 +43,18 @@
     </div> 
     <div class = "row">
             <div class = "col-md-3"></div>
-            <div class = "col-md-2 stats text-center" id="stats-user">
+            <div class = "col-md-1 stats text-right" id="">
+                    <div class = "" id="lblu-health">
+      
+                    </div>
+                    <div class = "" id="lblu-attack">
+    
+                    </div>
+                    <div class = "" id="lblu-countAttack">
+    
+                    </div>
+                </div>
+            <div class = "col-md-1 stats text-left" id="stats-user">
                 <div class = "" id="user-health">
   
                 </div>
@@ -55,8 +66,20 @@
                 </div>
             </div>
             <div class = "col-md-2">
+                
             </div>
-            <div class = "col-md-2 stats text-center" id="stats-versus">
+            <div class = "col-md-1 stats text-right" id="">
+                    <div class = "" id="lblv-health">
+       
+                    </div>
+                    <div class = "" id="lblv-attack">
+         
+                    </div>
+                    <div class = "" id="lblv-countAttack">
+             
+                    </div>
+            </div>
+            <div class = "col-md-1 stats text-left" id="stats-versus">
                 <div class = "" id="versus-health">
    
                 </div>
@@ -70,6 +93,11 @@
                 
             <div class = "col-md-2"></div>
     </div>  
+    <div class="row">
+        <div class = "col-md-12 text-center">
+            <button type="button" id="btn-attack" class="btn btn-danger">Attack!</button>
+        </div>
+    </div>
 
 </body>
 

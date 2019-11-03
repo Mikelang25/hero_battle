@@ -1,25 +1,4 @@
 
-
-#character-select{
-text-align: center;
-padding:20px;
-}
-
-#Superman{
-    background-image: url('../images/superman.jpg');
-}
-
-#Batman{
-    background-image: url('../images/batman.jpg');
-}
-
-#IronMan{
-    background-image: url('../images/ironman.png');
-}
-#stats-user, #stats-versus{
-    display: none;
-}
-
 .player{
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-weight: bolder;
@@ -46,9 +25,6 @@ padding:20px;
     font-weight: bold;
 }
 
-.stats{
- border: 1pt solid black;
-}
 .main-left{
     border-left: 1pt solid black;
     border-top: 1pt solid black;
@@ -62,4 +38,28 @@ padding:20px;
 .main-center{
     border-top: 1pt solid black;
     border-bottom: 1pt solid black;
+}
+
+#btn-attack{
+    margin:5px;
+}
+
+#character-select{
+    text-align: center;
+    padding:20px;
+}
+    
+#Superman{
+    background-image: url('../images/superman.jpg');
+}
+
+#Batman{
+    background-image: url('../images/batman.jpg');
+}
+
+#IronMan{
+    background-image: url('../images/ironman.png');
+}
+#stats-user, #stats-versus{
+    display: none;
 }

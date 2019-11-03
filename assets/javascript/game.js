@@ -54,18 +54,22 @@ $(document).ready(function() {
                 $(this).clone().appendTo("#versus-select");
                 versusPlayerSelected = true;
                 if($(this).text() ==="Superman"){
-                    $("#versus-health").text("Health: " + Superman.healthPoints)
-                    $("#versus-attack").text("Attack: " + Superman.attackPoints)
-                    $("#versus-countAttack").text("Counter: " + Superman.countAttack)
+                    $("#versus-health").text(Superman.healthPoints)
+                    $("#versus-attack").text(Superman.attackPoints)
+                    $("#versus-countAttack").text(Superman.countAttack)
                 }if ($(this).text() ==="Batman") {
-                    $("#versus-health").text("Health: " + Batman.healthPoints)
-                    $("#versus-attack").text("Attack: " + Batman.attackPoints)   
-                    $("#versus-countAttack").text("Counter: " + Batman.countAttack) 
+                    $("#versus-health").text(Batman.healthPoints)
+                    $("#versus-attack").text(Batman.attackPoints)   
+                    $("#versus-countAttack").text(Batman.countAttack) 
                 }if ($(this).text() ==="IronMan") {
-                    $("#versus-health").text("Health: " + IronMan.healthPoints)
-                    $("#versus-attack").text("Attack: " + IronMan.attackPoints) 
-                    $("#versus-countAttack").text("Counter: " + IronMan.countAttack)             
+                    $("#versus-health").text(IronMan.healthPoints)
+                    $("#versus-attack").text(IronMan.attackPoints) 
+                    $("#versus-countAttack").text(IronMan.countAttack)             
                 }
+                $("#lblv-health").text("Health: ")
+                $("#lblv-attack").text("Attack: ")  
+                $("#lblv-countAttack").text("Counter: ") 
+
                 $("#stats-versus").show();
                 console.log($(this).text())
                 $(this).remove();
@@ -73,18 +77,22 @@ $(document).ready(function() {
                 $(this).clone().appendTo("#user-select");
                 userPlayerSelected = true;
                 if($(this).text() ==="Superman"){
-                    $("#user-health").text("Health: " + Superman.healthPoints)
-                    $("#user-attack").text("Attack: " + Superman.attackPoints)
-                    $("#user-countAttack").text("Counter: " + Superman.countAttack)
+                    $("#user-health").text(Superman.healthPoints)
+                    $("#user-attack").text(Superman.attackPoints)
+                    $("#user-countAttack").text(Superman.countAttack)
                 }if ($(this).text() ==="Batman") {
-                    $("#user-health").text("Health: " + Batman.healthPoints)
-                    $("#user-attack").text("Attack: " + Batman.attackPoints)  
-                    $("#user-countAttack").text("Counter: " + Batman.countAttack)  
+                    $("#user-health").text(Batman.healthPoints)
+                    $("#user-attack").text(Batman.attackPoints)  
+                    $("#user-countAttack").text(Batman.countAttack)  
                 }if ($(this).text() ==="IronMan") {
-                    $("#user-health").text("Health: " + IronMan.healthPoints)
-                    $("#user-attack").text("Attack: " + IronMan.attackPoints)   
-                    $("#user-countAttack").text("Counter: " + Iron.countAttack)             
+                    $("#user-health").text(IronMan.healthPoints)
+                    $("#user-attack").text(IronMan.attackPoints)   
+                    $("#user-countAttack").text(Iron.countAttack)             
                 }
+                $("#lblu-health").text("Health: ")
+                $("#lblu-attack").text("Attack: ")  
+                $("#lblu-countAttack").text("Counter: ") 
+
                 $("#stats-user").show();
                 console.log($(this).text())
                 $(this).remove();
@@ -92,6 +100,29 @@ $(document).ready(function() {
             } 
                 
     }  
+    });
+
+    $("#btn-attack").on("click", function() {
+
+        if(userPlayerSelected && versusPlayerSelected){
+            console.log($("#versus-selected".find(healthPoints)))
+            
+
+
+
+
+
+
+        }else{
+
+
+
+
+        }
+
+
+
+
     });
 
     
