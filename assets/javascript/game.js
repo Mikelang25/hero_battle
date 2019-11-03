@@ -1,4 +1,6 @@
 
+userPlayerSelected = false;
+versusPlayerSelected = false;
 
 var character1 = {
     Name:"Superman",
@@ -32,14 +34,41 @@ $(document).ready(function() {
 
     players.forEach(function(arrayItem){
 
-        newPlayer = $("<div>")
+        var newPlayer = $("<div>")
         newPlayer.addClass("player")
         newPlayer.attr("id",arrayItem.Name)
+        newPlayer.attr("name",arrayItem.Name)
         newPlayer.text(arrayItem.Name)
         $("#character-select").append(newPlayer)
 
     });
 
+    $(".player").on("click", function() {
+
+        if(userPlayerSelected){
+            var versusPlayer = $("<div>")
+            versusPlayer.addClass($(this).text())
+            versusPlayer.addClass("player")
+            versusPlayer.attr("id","user-player")
+            versusPlayer.text($(this).text())
+            $("#versus-select").append(versusPlayer)
+            versusPlayerSelected = true;
+            $(this).remove();
+        }else{
+            var userPlayer = $("<div>")
+            userPlayer.addClass($(this).text())
+            userPlayer.addClass("player")
+            userPlayer.attr("id","user-player")
+            userPlayer.text($(this).text())
+            $("#user-select").append(userPlayer)
+            userPlayerSelected = true;
+            $(this).remove();
+        } 
+            
+        
+    });
+
+    
 
 
 
