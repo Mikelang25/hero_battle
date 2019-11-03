@@ -1,6 +1,15 @@
 
-userPlayerSelected = false;
-versusPlayerSelected = false;
+var userPlayerSelected = false;
+var versusPlayerSelected = false;
+var attacks = 0;
+var player = "";
+var versus = "";
+var userHealth = 0;
+var versusHealth = 0;
+var userAttack = 0; 
+var versusAttack = 0; 
+var userHealthStatus = 0;
+var versusHealthStatus = 0; 
 
 var Superman = {
     Name:"Superman",
@@ -71,7 +80,8 @@ $(document).ready(function() {
                 $("#lblv-countAttack").text("Counter: ") 
 
                 $("#stats-versus").show();
-                console.log($(this).text())
+                versus = $(this).text();
+                console.log(player);
                 $(this).remove();
             }else{
                 $(this).clone().appendTo("#user-select");
@@ -94,7 +104,8 @@ $(document).ready(function() {
                 $("#lblu-countAttack").text("Counter: ") 
 
                 $("#stats-user").show();
-                console.log($(this).text())
+                player = $(this).text();
+                console.log(versus)
                 $(this).remove();
                 
             } 
@@ -105,17 +116,33 @@ $(document).ready(function() {
     $("#btn-attack").on("click", function() {
 
         if(userPlayerSelected && versusPlayerSelected){
-            console.log($("#versus-selected".find(healthPoints)))
+            var userHealth = parseInt($("#user-health").text());
+            var userAttack = parseInt($("#user-attack").text());
+
+            var versusHealth = parseInt($("#versus-health").text());
+            var versusAttack = parseInt($("#versus-countAttack").text());
+
+            versusHealthStatus = versusHealth - userAttack - attacks; 
+            userHealthStatus = userHealth - versusAttack; 
             
+            $("#user-health").text(userHealthStatus);
+            $("#versus-health").text(versusHealthStatus);
+            $("#user-attack").text(userAttack + attacks);
+            attacks = attacks + 10;
+                if(userHealthStatus > 0 && versusHealthStatus <= 0){
+                    alert(player + "  Wins!!!")
+                    $("#versus-select").empty();
+                    $("#stats-versus").hide();
+                    $("#lbl-versus").remove()
+                }
+                if(userHealthStatus <= 0 && versusHealthStatus > 0){
+                    alert(versus + "  Wins!!!")
 
-
-
-
-
+                }      
 
         }else{
 
-
+            alert("please select your opponent")
 
 
         }
