@@ -12,6 +12,7 @@ var versusAttack = 0;
 var userHealthStatus = 0;
 var versusHealthStatus = 0; 
 var totalDamage = 0;
+var gameRefresh = true;
 
 var Superman = {
     Name:"Superman",
@@ -65,7 +66,7 @@ $(document).ready(function() {
     
     //checks to see if a user player and versus player has been selected 
     if(userPlayerSelected && versusPlayerSelected){
-
+        alert("both players already selected")
     }else{
             
             if(userPlayerSelected){
@@ -73,23 +74,18 @@ $(document).ready(function() {
                 versusPlayerSelected = true;
                 if($(this).text() ==="Superman"){
                     $("#versus-health").text(Superman.healthPoints)
-                    $("#versus-attack").text(Superman.attackPoints)
                     $("#versus-countAttack").text(Superman.countAttack)
                 }if ($(this).text() ==="Batman") {
-                    $("#versus-health").text(Batman.healthPoints)
-                    $("#versus-attack").text(Batman.attackPoints)   
+                    $("#versus-health").text(Batman.healthPoints) 
                     $("#versus-countAttack").text(Batman.countAttack) 
                 }if ($(this).text() ==="IronMan") {
                     $("#versus-health").text(IronMan.healthPoints)
-                    $("#versus-attack").text(IronMan.attackPoints) 
                     $("#versus-countAttack").text(IronMan.countAttack)             
                 }if ($(this).text() ==="Wolverine") {
                     $("#versus-health").text(Wolverine.healthPoints)
-                    $("#versus-attack").text(Wolverine.attackPoints) 
                     $("#versus-countAttack").text(Wolverine.countAttack)             
                 }
                 $("#lblv-health").text("Health: ")
-                $("#lblv-attack").text("Attack: ")  
                 $("#lblv-countAttack").text("Counter: ") 
 
                 $("#stats-versus").show();
@@ -104,23 +100,19 @@ $(document).ready(function() {
                 if($(this).text() ==="Superman"){
                     $("#user-health").text(Superman.healthPoints)
                     $("#user-attack").text(Superman.attackPoints)
-                    $("#user-countAttack").text(Superman.countAttack)
                 }if ($(this).text() ==="Batman") {
                     $("#user-health").text(Batman.healthPoints)
                     $("#user-attack").text(Batman.attackPoints)  
-                    $("#user-countAttack").text(Batman.countAttack)  
                 }if ($(this).text() ==="IronMan") {
                     $("#user-health").text(IronMan.healthPoints)
-                    $("#user-attack").text(IronMan.attackPoints)   
-                    $("#user-countAttack").text(Iron.countAttack)             
+                    $("#user-attack").text(IronMan.attackPoints)              
                 }if ($(this).text() ==="Wolverine") {
                     $("#user-health").text(Wolverine.healthPoints)
-                    $("#user-attack").text(Wolverine.attackPoints)   
-                    $("#user-countAttack").text(Wolverine.countAttack)             
+                    $("#user-attack").text(Wolverine.attackPoints)              
                 }
                 $("#lblu-health").text("Health: ")
                 $("#lblu-attack").text("Attack: ")  
-                $("#lblu-countAttack").text("Counter: ") 
+
 
                 $("#stats-user").show();
                 $("#lbl-user").show();
@@ -190,7 +182,54 @@ $(document).ready(function() {
 
 
 
-    });
+        });
+
+
+        $("#btn-reset").on("click", function() {
+
+            userPlayerSelected = false;
+            versusPlayerSelected = false;
+            attacks = 0;
+            player = "";
+            versus = "";
+            enemiesRemain = 0;
+            userHealth = 0;
+            versusHealth = 0;
+            userAttack = 0; 
+            versusAttack = 0; 
+            userHealthStatus = 0;
+            versusHealthStatus = 0; 
+            totalDamage = 0;
+            
+            $("#battle-status").text("Directions: Start by choosing your player, then choose a challenger and begin the attack!")
+            $("#user-select").empty();
+            $("#stats-user").hide();
+            $("#lbl-user").hide()
+            $("#versus-select").empty();
+            $("#stats-versus").hide();
+            $("#lbl-versus").hide()
+            $("#user-select").empty();
+            $("#versus-select").empty();
+
+            $("#IronMan").remove();
+            $("#Batman").remove();
+            $("#Superman").remove();
+            $("#Wolverine").remove();
+
+            players.forEach(function(arrayItem){
+
+                var newPlayer = $("<div>")
+                newPlayer.addClass("player")
+                newPlayer.attr("id",arrayItem.Name)
+                newPlayer.attr("healthPoints",arrayItem.healthPoints)
+                newPlayer.attr("attackPoints",arrayItem.attackPoints)
+                newPlayer.attr("countAttack",arrayItem.countAttack)
+                newPlayer.attr("name",arrayItem.Name)
+                newPlayer.text(arrayItem.Name)
+                $("#character-select").append(newPlayer)
+            });
+
+        });
 
     
 

@@ -59,7 +59,7 @@ body{
     background-image: url('../images/mocha.png');
 }
 
-#btn-attack{
+#btn-attack, #btn-reset{
     margin-top:20px;
     font-size: 15pt;
     font-family: 'Bangers', cursive;
