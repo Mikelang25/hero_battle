@@ -61,6 +61,9 @@ body{
 
 #btn-attack{
     margin-top:20px;
+    font-size: 15pt;
+    font-family: 'Bangers', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #user-select{
@@ -95,17 +98,18 @@ body{
 }
 
  #lbl-user, #lbl-versus{
-    display: none;
     background-color: whitesmoke;
     border-left: 2pt solid black;
     border-bottom: 2pt solid black;
-
+    font-family: 'Bowlby One SC', cursive;
+    display: none;
  }
 
 #stats-user, #stats-versus{
     border-bottom: 2pt solid black;
     border-right: 2pt solid black;
     background-color: whitesmoke;
+    font-family: 'Bowlby One SC', cursive;
     display: none;
 }
 
@@ -115,4 +119,5 @@ body{
     font-weight: bold;
     border:2pt solid black;
     background-color: whitesmoke;
+    font-family: 'Permanent Marker', cursive;
 }
