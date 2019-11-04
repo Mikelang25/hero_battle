@@ -4,12 +4,14 @@ var versusPlayerSelected = false;
 var attacks = 0;
 var player = "";
 var versus = "";
+var enemiesRemain = 0;
 var userHealth = 0;
 var versusHealth = 0;
 var userAttack = 0; 
 var versusAttack = 0; 
 var userHealthStatus = 0;
 var versusHealthStatus = 0; 
+var totalDamage = 0;
 
 var Superman = {
     Name:"Superman",
@@ -92,6 +94,7 @@ $(document).ready(function() {
 
                 $("#stats-versus").show();
                 versus = $(this).text();
+                $("#battle-status").text("Begin the battle!")
                 console.log(player);
                 $(this).remove();
             }else{
@@ -120,6 +123,7 @@ $(document).ready(function() {
 
                 $("#stats-user").show();
                 player = $(this).text();
+                $("#battle-status").text("Now choose a challenger!")
                 console.log(versus)
                 $(this).remove();
                 
@@ -137,26 +141,36 @@ $(document).ready(function() {
             var versusHealth = parseInt($("#versus-health").text());
             var versusAttack = parseInt($("#versus-countAttack").text());
 
-            versusHealthStatus = versusHealth - userAttack - attacks; 
+            totalDamage = userAttack + attacks;
+            versusHealthStatus = versusHealth - totalDamage; 
             userHealthStatus = userHealth - versusAttack; 
+            
             
             $("#user-health").text(userHealthStatus);
             $("#versus-health").text(versusHealthStatus);
             $("#user-attack").text(userAttack + attacks);
+
+            $("#battle-status").text(player + " has dealt  " + totalDamage + " damage to " + versus + ". " + versus + " has countered and dealt  " + versusAttack + " damage!" );
+
             attacks = attacks + 10;
                 if(userHealthStatus > 0 && versusHealthStatus <= 0){
-                    alert(player + "  Wins!!!")
                     $("#versus-select").empty();
                     $("#stats-versus").hide();
                     $("#lbl-versus").remove()
                     versusPlayerSelected = false;
+                    enemiesRemain = $("#character-select div").length;
+                    if(enemiesRemain === 0){
+                        $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
+                    }else{
+                        $("#battle-status").text(versus + "  has been defeated! There are " + enemiesRemain + "  enemies remaing. Select your next opponenet")
+                    }
                 }
                 if(userHealthStatus <= 0 && versusHealthStatus > 0){
-                    alert(versus + "  Wins!!!")
                     $("#user-select").empty();
                     $("#stats-user").hide();
                     $("#lbl-user").remove()
                     userPlayerSelected = false;
+                    $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
 
                 }      
 
