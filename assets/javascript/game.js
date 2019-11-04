@@ -93,6 +93,7 @@ $(document).ready(function() {
                 $("#lblv-countAttack").text("Counter: ") 
 
                 $("#stats-versus").show();
+                $("#lbl-versus").show()
                 versus = $(this).text();
                 $("#battle-status").text("Begin the battle!")
                 console.log(player);
@@ -122,6 +123,7 @@ $(document).ready(function() {
                 $("#lblu-countAttack").text("Counter: ") 
 
                 $("#stats-user").show();
+                $("#lbl-user").show();
                 player = $(this).text();
                 $("#battle-status").text("Now choose a challenger!")
                 console.log(versus)
@@ -156,7 +158,7 @@ $(document).ready(function() {
                 if(userHealthStatus > 0 && versusHealthStatus <= 0){
                     $("#versus-select").empty();
                     $("#stats-versus").hide();
-                    $("#lbl-versus").remove()
+                    $("#lbl-versus").hide()
                     versusPlayerSelected = false;
                     enemiesRemain = $("#character-select div").length;
                     if(enemiesRemain === 0){
@@ -176,7 +178,11 @@ $(document).ready(function() {
 
         }else{
 
-            alert("please select your opponent")
+            if(enemiesRemain === 0){
+                
+            }else{
+                $("#battle-status").text("Please select your next opponent")
+            }
 
 
         }

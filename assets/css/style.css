@@ -1,13 +1,17 @@
 
 .title-head{
     color:light;
-    background-image: url('');
-    border:2pt solid grey;
+    border-bottom:2pt solid white;
     font-size: 50pt;
+    font-family: 'Bangers', cursive;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    background-image: url('../images/dark.png');
 }
 
-
+body{
+    background-image: url('../images/colosseum.jpg');
+    background-size: cover;
+}
 
 .player{
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -34,6 +38,7 @@
     margin-top:80px;
     font-size:50pt;
     font-weight: bold;
+    font-family: 'Bangers', cursive;
 }
 
 .main-left{
@@ -89,12 +94,25 @@
     background-image: url('../images/wolverine.jpg');
 }
 
+ #lbl-user, #lbl-versus{
+    display: none;
+    background-color: whitesmoke;
+    border-left: 2pt solid black;
+    border-bottom: 2pt solid black;
+
+ }
+
 #stats-user, #stats-versus{
+    border-bottom: 2pt solid black;
+    border-right: 2pt solid black;
+    background-color: whitesmoke;
     display: none;
 }
 
 #battle-status{
+    font-size: 18pt;
     margin-top: 20px;
     font-weight: bold;
-    border:1pt solid black;
+    border:2pt solid black;
+    background-color: whitesmoke;
 }
