@@ -229,6 +229,7 @@ $(document).ready(function() {
                 $("#character-select").append(newPlayer)
             });
 
+
         });
 
     
