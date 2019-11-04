@@ -47,146 +47,146 @@ var players = [Superman,Batman,IronMan,Wolverine];
 
 
 $(document).ready(function() {
-
-    players.forEach(function(arrayItem){
-
-        var newPlayer = $("<div>")
-        newPlayer.addClass("player")
-        newPlayer.attr("id",arrayItem.Name)
-        newPlayer.attr("healthPoints",arrayItem.healthPoints)
-        newPlayer.attr("attackPoints",arrayItem.attackPoints)
-        newPlayer.attr("countAttack",arrayItem.countAttack)
-        newPlayer.attr("name",arrayItem.Name)
-        newPlayer.text(arrayItem.Name)
-        $("#character-select").append(newPlayer)
-
-    });
-
-    $(".player").on("click", function() {
+    createPlayers();
+    playerActions();
     
-    //checks to see if a user player and versus player has been selected 
-    if(userPlayerSelected && versusPlayerSelected){
-        alert("both players already selected")
-    }else{
-            
-            if(userPlayerSelected){
-                $(this).clone().appendTo("#versus-select");
-                versusPlayerSelected = true;
-                if($(this).text() ==="Superman"){
-                    $("#versus-health").text(Superman.healthPoints)
-                    $("#versus-countAttack").text(Superman.countAttack)
-                }if ($(this).text() ==="Batman") {
-                    $("#versus-health").text(Batman.healthPoints) 
-                    $("#versus-countAttack").text(Batman.countAttack) 
-                }if ($(this).text() ==="IronMan") {
-                    $("#versus-health").text(IronMan.healthPoints)
-                    $("#versus-countAttack").text(IronMan.countAttack)             
-                }if ($(this).text() ==="Wolverine") {
-                    $("#versus-health").text(Wolverine.healthPoints)
-                    $("#versus-countAttack").text(Wolverine.countAttack)             
-                }
-                $("#lblv-health").text("Health: ")
-                $("#lblv-countAttack").text("Counter: ") 
+    function createPlayers() {
+        players.forEach(function(arrayItem){
 
-                $("#stats-versus").show();
-                $("#lbl-versus").show()
-                versus = $(this).text();
-                $("#battle-status").text("Begin the battle!")
-                console.log(player);
-                $(this).remove();
-            }else{
-                $(this).clone().appendTo("#user-select");
-                userPlayerSelected = true;
-                if($(this).text() ==="Superman"){
-                    $("#user-health").text(Superman.healthPoints)
-                    $("#user-attack").text(Superman.attackPoints)
-                }if ($(this).text() ==="Batman") {
-                    $("#user-health").text(Batman.healthPoints)
-                    $("#user-attack").text(Batman.attackPoints)  
-                }if ($(this).text() ==="IronMan") {
-                    $("#user-health").text(IronMan.healthPoints)
-                    $("#user-attack").text(IronMan.attackPoints)              
-                }if ($(this).text() ==="Wolverine") {
-                    $("#user-health").text(Wolverine.healthPoints)
-                    $("#user-attack").text(Wolverine.attackPoints)              
-                }
-                $("#lblu-health").text("Health: ")
-                $("#lblu-attack").text("Attack: ")  
-
-
-                $("#stats-user").show();
-                $("#lbl-user").show();
-                player = $(this).text();
-                $("#battle-status").text("Now choose a challenger!")
-                console.log(versus)
-                $(this).remove();
-                
-            } 
-                
-    }  
-    });
-
-    $("#btn-attack").on("click", function() {
-
-        if(userPlayerSelected && versusPlayerSelected){
-            var userHealth = parseInt($("#user-health").text());
-            var userAttack = parseInt($("#user-attack").text());
-
-            var versusHealth = parseInt($("#versus-health").text());
-            var versusAttack = parseInt($("#versus-countAttack").text());
-
-            totalDamage = userAttack + attacks;
-            versusHealthStatus = versusHealth - totalDamage; 
-            userHealthStatus = userHealth - versusAttack; 
-            
-            
-            $("#user-health").text(userHealthStatus);
-            $("#versus-health").text(versusHealthStatus);
-            $("#user-attack").text(userAttack + attacks);
-
-            $("#battle-status").text(player + " has dealt  " + totalDamage + " damage to " + versus + ". " + versus + " has countered and dealt  " + versusAttack + " damage!" );
-
-            attacks = attacks + 10;
-                if(userHealthStatus > 0 && versusHealthStatus <= 0){
-                    $("#versus-select").empty();
-                    $("#stats-versus").hide();
-                    $("#lbl-versus").hide()
-                    versusPlayerSelected = false;
-                    enemiesRemain = $("#character-select div").length;
-                    if(enemiesRemain === 0){
-                        $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
-                    }else{
-                        $("#battle-status").text(versus + "  has been defeated! There are " + enemiesRemain + "  enemies remaing. Select your next opponenet")
-                    }
-                }
-                if(userHealthStatus <= 0 && versusHealthStatus > 0){
-                    $("#user-select").empty();
-                    $("#stats-user").hide();
-                    $("#lbl-user").remove()
-                    userPlayerSelected = false;
-                    $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
-
-                }      
-
-        }else{
-
-            if(enemiesRemain === 0){
-                
-            }else{
-                $("#battle-status").text("Please select your next opponent")
-            }
-
-
-        }
-
-
-
-
+            var newPlayer = $("<div>")
+            newPlayer.addClass("player")
+            newPlayer.attr("id",arrayItem.Name)
+            newPlayer.attr("healthPoints",arrayItem.healthPoints)
+            newPlayer.attr("attackPoints",arrayItem.attackPoints)
+            newPlayer.attr("countAttack",arrayItem.countAttack)
+            newPlayer.attr("name",arrayItem.Name)
+            newPlayer.text(arrayItem.Name)
+            $("#character-select").append(newPlayer)
+    
         });
+    }
+
+    function playerActions() {
+        $(".player").on("click", function() {
+            //checks to see if a user player and versus player has been selected 
+            if(userPlayerSelected && versusPlayerSelected){
+                alert("both players already selected")
+            }else{
+                    
+                    if(userPlayerSelected){
+                        $(this).clone().appendTo("#versus-select");
+                        versusPlayerSelected = true;
+                        if($(this).text() ==="Superman"){
+                            $("#versus-health").text(Superman.healthPoints)
+                            $("#versus-countAttack").text(Superman.countAttack)
+                        }if ($(this).text() ==="Batman") {
+                            $("#versus-health").text(Batman.healthPoints) 
+                            $("#versus-countAttack").text(Batman.countAttack) 
+                        }if ($(this).text() ==="IronMan") {
+                            $("#versus-health").text(IronMan.healthPoints)
+                            $("#versus-countAttack").text(IronMan.countAttack)             
+                        }if ($(this).text() ==="Wolverine") {
+                            $("#versus-health").text(Wolverine.healthPoints)
+                            $("#versus-countAttack").text(Wolverine.countAttack)             
+                        }
+                        $("#lblv-health").text("Health: ")
+                        $("#lblv-countAttack").text("Counter: ") 
+        
+                        $("#stats-versus").show();
+                        $("#lbl-versus").show()
+                        versus = $(this).text();
+                        $("#battle-status").text("Begin the battle!")
+                        console.log(player);
+                        $(this).remove();
+                    }else{
+                        $(this).clone().appendTo("#user-select");
+                        userPlayerSelected = true;
+                        if($(this).text() ==="Superman"){
+                            $("#user-health").text(Superman.healthPoints)
+                            $("#user-attack").text(Superman.attackPoints)
+                        }if ($(this).text() ==="Batman") {
+                            $("#user-health").text(Batman.healthPoints)
+                            $("#user-attack").text(Batman.attackPoints)  
+                        }if ($(this).text() ==="IronMan") {
+                            $("#user-health").text(IronMan.healthPoints)
+                            $("#user-attack").text(IronMan.attackPoints)              
+                        }if ($(this).text() ==="Wolverine") {
+                            $("#user-health").text(Wolverine.healthPoints)
+                            $("#user-attack").text(Wolverine.attackPoints)              
+                        }
+                        $("#lblu-health").text("Health: ")
+                        $("#lblu-attack").text("Attack: ")  
+        
+        
+                        $("#stats-user").show();
+                        $("#lbl-user").show();
+                        player = $(this).text();
+                        $("#battle-status").text("Now choose a challenger!")
+                        console.log(versus)
+                        $(this).remove();
+                        
+                    } 
+                        
+            }  
+        });
+
+        $("#btn-attack").on("click", function() {
+
+            if(userPlayerSelected && versusPlayerSelected){
+                var userHealth = parseInt($("#user-health").text());
+                var userAttack = parseInt($("#user-attack").text());
+    
+                var versusHealth = parseInt($("#versus-health").text());
+                var versusAttack = parseInt($("#versus-countAttack").text());
+    
+                totalDamage = userAttack + attacks;
+                versusHealthStatus = versusHealth - totalDamage; 
+                userHealthStatus = userHealth - versusAttack; 
+                
+                
+                $("#user-health").text(userHealthStatus);
+                $("#versus-health").text(versusHealthStatus);
+                $("#user-attack").text(userAttack + attacks);
+    
+                $("#battle-status").text(player + " has dealt  " + totalDamage + " damage to " + versus + ". " + versus + " has countered and dealt  " + versusAttack + " damage!" );
+    
+                attacks = attacks + 10;
+                    if(userHealthStatus > 0 && versusHealthStatus <= 0){
+                        $("#versus-select").empty();
+                        $("#stats-versus").hide();
+                        $("#lbl-versus").hide()
+                        versusPlayerSelected = false;
+                        enemiesRemain = $("#character-select div").length;
+                        if(enemiesRemain === 0){
+                            $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
+                        }else{
+                            $("#battle-status").text(versus + "  has been defeated! There are " + enemiesRemain + "  enemies remaing. Select your next opponenet")
+                        }
+                    }
+                    if(userHealthStatus <= 0 && versusHealthStatus > 0){
+                        $("#user-select").empty();
+                        $("#stats-user").hide();
+                        $("#lbl-user").remove()
+                        userPlayerSelected = false;
+                        $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
+    
+                    }      
+    
+            }else{
+    
+                if(enemiesRemain === 0){
+                    
+                }else{
+                    $("#battle-status").text("Please select your next opponent")
+                }
+    
+    
+            }
+        });
+    }
 
 
         $("#btn-reset").on("click", function() {
-
             userPlayerSelected = false;
             versusPlayerSelected = false;
             attacks = 0;
@@ -216,18 +216,8 @@ $(document).ready(function() {
             $("#Superman").remove();
             $("#Wolverine").remove();
 
-            players.forEach(function(arrayItem){
-
-                var newPlayer = $("<div>")
-                newPlayer.addClass("player")
-                newPlayer.attr("id",arrayItem.Name)
-                newPlayer.attr("healthPoints",arrayItem.healthPoints)
-                newPlayer.attr("attackPoints",arrayItem.attackPoints)
-                newPlayer.attr("countAttack",arrayItem.countAttack)
-                newPlayer.attr("name",arrayItem.Name)
-                newPlayer.text(arrayItem.Name)
-                $("#character-select").append(newPlayer)
-            });
+            createPlayers();
+            playerActions();
 
 
         });
