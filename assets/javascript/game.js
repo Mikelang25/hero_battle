@@ -170,7 +170,28 @@ $(document).ready(function() {
                         userPlayerSelected = false;
                         $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
     
-                    }      
+                    }
+                    if(userHealthStatus <= 0 && versusHealthStatus <= 0 && userHealthStatus > versusHealthStatus){
+                        $("#versus-select").empty();
+                        $("#stats-versus").hide();
+                        $("#lbl-versus").hide()
+                        versusPlayerSelected = false;
+                        enemiesRemain = $("#character-select div").length;
+                        if(enemiesRemain === 0){
+                            $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
+                        }else{
+                            $("#battle-status").text(versus + "  has been defeated! There are " + enemiesRemain + "  enemies remaing. Select your next opponenet")
+                        }
+                    }
+                    if(userHealthStatus <= 0 && versusHealthStatus <=0 && userHealthStatus < versusHealthStatus){
+                        $("#user-select").empty();
+                        $("#stats-user").hide();
+                        $("#lbl-user").remove()
+                        userPlayerSelected = false;
+                        $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
+    
+                    }
+      
     
             }else{
     
