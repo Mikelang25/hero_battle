@@ -13,18 +13,19 @@ var userHealthStatus = 0;
 var versusHealthStatus = 0; 
 var totalDamage = 0;
 var gameRefresh = true;
+var gameOver = false;
 
 var Superman = {
     Name:"Superman",
-    healthPoints:300,
-    attackPoints:55,
-    countAttack:20,
+    healthPoints:270,
+    attackPoints:25,
+    countAttack:40,
 }
 
 var Batman = {
     Name:"Batman",
     healthPoints: 250,
-    attackPoints: 45,
+    attackPoints: 30,
     countAttack: 35,
 }
 
@@ -37,8 +38,8 @@ var IronMan = {
 
 var Wolverine = {
     Name:"Wolverine",
-    healthPoints: 320,
-    attackPoints: 65,
+    healthPoints: 310,
+    attackPoints: 35,
     countAttack: 38,
 }
 
@@ -132,6 +133,11 @@ $(document).ready(function() {
 
         $("#btn-attack").on("click", function() {
 
+        if(gameOver){
+
+
+        }else{
+
             if(userPlayerSelected && versusPlayerSelected){
                 var userHealth = parseInt($("#user-health").text());
                 var userAttack = parseInt($("#user-attack").text());
@@ -150,7 +156,7 @@ $(document).ready(function() {
     
                 $("#battle-status").text(player + " has dealt  " + totalDamage + " damage to " + versus + ". " + versus + " has countered and dealt  " + versusAttack + " damage!" );
     
-                attacks = attacks + 10;
+                attacks = attacks + 8;
                     if(userHealthStatus > 0 && versusHealthStatus <= 0){
                         $("#versus-select").empty();
                         $("#stats-versus").hide();
@@ -166,50 +172,63 @@ $(document).ready(function() {
                     if(userHealthStatus <= 0 && versusHealthStatus > 0){
                         $("#user-select").empty();
                         $("#stats-user").hide();
-                        $("#lbl-user").remove()
-                        userPlayerSelected = false;
-                        $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
-    
-                    }
-                    if(userHealthStatus <= 0 && versusHealthStatus <= 0 && userHealthStatus > versusHealthStatus){
-                        $("#versus-select").empty();
+                        $("#lbl-user").hide();
                         $("#stats-versus").hide();
                         $("#lbl-versus").hide()
-                        versusPlayerSelected = false;
-                        enemiesRemain = $("#character-select div").length;
-                        if(enemiesRemain === 0){
-                            $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
-                        }else{
-                            $("#battle-status").text(versus + "  has been defeated! There are " + enemiesRemain + "  enemies remaing. Select your next opponenet")
-                        }
-                    }
-                    if(userHealthStatus <= 0 && versusHealthStatus <=0 && userHealthStatus < versusHealthStatus){
-                        $("#user-select").empty();
-                        $("#stats-user").hide();
-                        $("#lbl-user").remove()
                         userPlayerSelected = false;
                         $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
+                        gameOver = true;
     
                     }
+                    //if both players attacks cause them to have negative health, it looks at the player with the hightest number
+                    if(userHealthStatus <= 0 && versusHealthStatus <= 0){
+                        if(userHealthStatus > versusHealthStatus){
+                            $("#versus-select").empty();
+                            $("#stats-versus").hide();
+                            $("#lbl-versus").hide();
+                            $("#stats-user").hide();
+                            $("#lbl-user").hide();
+
+                            if(enemiesRemain === 0){
+                                $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
+                            }else{
+                                $("#battle-status").text(versus + "  has been defeated!  " + player + "  cannot continue the fight....Hit restart to play again.")
+                            }
+                            
+                        }else{
+                            $("#user-select").empty();
+                            $("#stats-user").hide();
+                            $("#lbl-user").hide();
+                            $("#stats-versus").hide();
+                            $("#lbl-versus").hide()
+                            userPlayerSelected = false;
+                            $("#battle-status").text(versus + " is victorus! Hit restart to play again...")
+                            gameOver = true;
+                        }
+                    }
+
       
     
             }else{
     
                 if(enemiesRemain === 0){
-                    
+                    gameOver = true;
                 }else{
                     $("#battle-status").text("Please select your next opponent")
                 }
     
     
             }
+        }
         });
+        
     }
 
 
         $("#btn-reset").on("click", function() {
             userPlayerSelected = false;
             versusPlayerSelected = false;
+            gameOver = false;
             attacks = 0;
             player = "";
             versus = "";
