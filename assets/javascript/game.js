@@ -17,30 +17,30 @@ var gameOver = false;
 
 var Superman = {
     Name:"Superman",
-    healthPoints:270,
-    attackPoints:25,
-    countAttack:40,
+    healthPoints:254,
+    attackPoints:30,
+    countAttack:35,
 }
 
 var Batman = {
     Name:"Batman",
-    healthPoints: 250,
-    attackPoints: 30,
-    countAttack: 35,
+    healthPoints: 251,
+    attackPoints: 29,
+    countAttack: 33,
 }
 
 var IronMan = {
     Name:"IronMan",
-    healthPoints: 280,
-    attackPoints: 40,
+    healthPoints: 256,
+    attackPoints: 29,
     countAttack: 30,
 }
 
 var Wolverine = {
     Name:"Wolverine",
-    healthPoints: 310,
-    attackPoints: 35,
-    countAttack: 38,
+    healthPoints: 265,
+    attackPoints: 31,
+    countAttack: 33,
 }
 
 var players = [Superman,Batman,IronMan,Wolverine];
@@ -188,7 +188,7 @@ $(document).ready(function() {
                             $("#lbl-versus").hide();
                             $("#stats-user").hide();
                             $("#lbl-user").hide();
-
+                            enemiesRemain = $("#character-select div").length;
                             if(enemiesRemain === 0){
                                 $("#battle-status").text(player + " has defeated all enemies! Hit restart to play again...")
                             }else{
