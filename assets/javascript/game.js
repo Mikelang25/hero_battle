@@ -18,15 +18,15 @@ var gameOver = false;
 var Superman = {
     Name:"Superman",
     healthPoints:254,
-    attackPoints:30,
-    countAttack:35,
+    attackPoints:31,
+    countAttack:34,
 }
 
 var Batman = {
     Name:"Batman",
     healthPoints: 251,
-    attackPoints: 29,
-    countAttack: 33,
+    attackPoints: 30,
+    countAttack: 31,
 }
 
 var IronMan = {
@@ -39,7 +39,7 @@ var IronMan = {
 var Wolverine = {
     Name:"Wolverine",
     healthPoints: 265,
-    attackPoints: 31,
+    attackPoints: 32,
     countAttack: 33,
 }
 
