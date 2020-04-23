@@ -8,7 +8,7 @@ The user will select a character and must then go through the gauntlet and fight
 
 
 
-![page view](readImages/siteView.png)
+![page view](/readImages/siteView.png)
 
 My goal with the styling was to give the user that arcade/comicbook feel
 
